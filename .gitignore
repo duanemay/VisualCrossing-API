@@ -1,0 +1,9 @@
+.build/
+.idea/
+.git/
+
+VisualCrossing-API-*.tar.gz
+VisualCrossing-API-*/
+
+*.swp
+*.bak
