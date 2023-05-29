@@ -214,16 +214,15 @@ VisualCrossing::API - Provides Perl API to VisualCrossing
 =head1 SYNOPSIS
 
     use VisualCrossing::API;
-    use JSON::XS;
     use feature 'say';
 
-    my $location = "AU419";
-    my $date = "2023-05-25"; # example  time (optional)
-    my $key = "ABCDEFGABCDEFGABCDEFGABCD"; # example VisualCrossing API key
+    my $location = "AU419";                # example location (required)
+    my $date = "2023-05-25";               # example  time (optional)
+    my $key = "ABCDEFGABCDEFGABCDEFGABCD"; # example VisualCrossing API key (required)
 
     ## Current Data (limit to current, saves on API cost)
     my $weatherApi = VisualCrossing::API->new(
-        key       => $key,
+        key      => $key,
         location => $location,
         include  => "current",
     );
@@ -233,11 +232,11 @@ VisualCrossing::API - Provides Perl API to VisualCrossing
     say "current conditions: " . $current->{currentConditions}->{conditions};
 
     ## Historical Data (limit to single day, saves on API cost)
-    my $weatherApi = VisualCrossing::API->new(
-        key       => $key,
+    $weatherApi = VisualCrossing::API->new(
+        key      => $key,
         location => $location,
-        date      => $date
-        date2      => $date
+        date     => $date,
+        date2    => $date,
         include  => "days",
     );
     my $history = $weatherApi->getWeather;
